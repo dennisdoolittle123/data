@@ -5,6 +5,7 @@ import ratings.Rating;
 import ratings.Reviewer;
 import ratings.Song;
 
+
 import static org.junit.Assert.assertTrue;
 public class TestClasses1 {
 
