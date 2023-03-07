@@ -6,6 +6,7 @@ import ratings.Reviewer;
 import ratings.Song;
 import ratings.datastructures.LinkedListNode;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class TestDataStructures1 {
@@ -59,8 +60,8 @@ public class TestDataStructures1 {
     @Test
     public void testDidReviewerRateSong() {
         LinkedListNode<Rating> expected = new LinkedListNode<>(new Rating("Jesse", 5));
-        expected = new LinkedListNode<>(new Rating("Paul", 2));
-        expected = new LinkedListNode<>(new Rating("Carl", 1));
+        expected.setNext(new LinkedListNode<>(new Rating("Paul", 2)));
+        expected.getNext().setNext(new LinkedListNode<>(new Rating("Carl", 1)));
 
         Song song = new Song("Jimmy, Brian, and Mike", "Eminem", "Jr7ytAtXTXw");
 
@@ -69,8 +70,8 @@ public class TestDataStructures1 {
         assertTrue(song.didReviewerRateSong("Jesse"));
         assertTrue(song.didReviewerRateSong("Paul"));
         assertTrue(song.didReviewerRateSong("Carl"));
-        assertTrue(!song.didReviewerRateSong("Matt"));
-        assertTrue(!song.didReviewerRateSong(""));
+        assertFalse(song.didReviewerRateSong("Matt"));
+        assertFalse(song.didReviewerRateSong(""));
     }
 
     @Test
@@ -108,11 +109,6 @@ public class TestDataStructures1 {
 
     @Test
     public void testRemoveRatingByReviewer() {
-
-       LinkedListNode<Rating> expected = new LinkedListNode<>(new Rating("Jesse", 1));
-        expected = new LinkedListNode<>(new Rating("Paul", 2));
-        expected = new LinkedListNode<>(new Rating("Carl", 3));
-
         Song song = new Song("Dynamite", "BTS", "o-YBDTqX_ZU");
 
         song.addRating(new Rating("Jesse", 5));
@@ -126,6 +122,10 @@ public class TestDataStructures1 {
 
         song.addRating(new Rating("Paul", 2));
         song.addRating(new Rating("Jesse", 1));
+
+        LinkedListNode<Rating> expected = new LinkedListNode<>(new Rating("Carl", 3));
+        expected.append(new Rating("Paul", 2));
+        expected.append(new Rating("Jesse", 1));
 
         LinkedListNode<Rating> computed = song.getRatings();
         checkRatingsList(computed, expected);

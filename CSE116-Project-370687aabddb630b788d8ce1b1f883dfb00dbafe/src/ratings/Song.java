@@ -71,6 +71,9 @@ public class Song {
         }
     }
     public boolean didReviewerRateSong(String reviewerID){
+        if (ratings == null){
+            return false;
+        }
         LinkedListNode<Rating> current = ratings;
         while(current != null){
             if (current.getValue().getReviewerID().equals(reviewerID)){
