@@ -5,7 +5,7 @@ public class LinkedListNode<T> {
     private T value;
     private LinkedListNode<T> next;
 
-    public LinkedListNode(T val, LinkedListNode<T> next) {
+    public LinkedListNode(T val) {
         this.value = val;
         this.next = next;
     }
@@ -51,7 +51,7 @@ public class LinkedListNode<T> {
 
     public void append(T value) {
         if (this.next == null) {
-            this.next = new LinkedListNode<>(value, null);
+            this.next = new LinkedListNode<>(value);
         } else {
             this.next.append(value);
         }
@@ -59,7 +59,7 @@ public class LinkedListNode<T> {
 
     public void insert(T value, int loc) {
         if (loc == 0) {
-            this.next = new LinkedListNode<>(this.value, this.next);
+            this.next = new LinkedListNode<>(this.value);
             this.value = value;
         } else {
             this.next.insert(value, loc - 1);
