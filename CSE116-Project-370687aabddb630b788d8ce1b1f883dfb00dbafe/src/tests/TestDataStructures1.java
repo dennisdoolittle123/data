@@ -26,6 +26,7 @@ public class TestDataStructures1 {
         assertTrue(computed.getReviewerID().equals(expected.getReviewerID()));
     }
 
+
     public void checkRatingsList(LinkedListNode<Rating> computed, LinkedListNode<Rating> expected) {
         if (expected == null) {
             assertTrue(computed == null);
