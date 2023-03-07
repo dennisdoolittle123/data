@@ -46,7 +46,7 @@ public class TestDataStructures1 {
 
     @Test
     public void testAddRatingsWithoutDuplicateReviewerIDs() {
-        LinkedListNode<Rating> expected = new LinkedListNode<>(new Rating("Jesse", 3));
+        LinkedListNode<Rating> expected = new LinkedListNode<>(new Rating("Paul", 4));
         expected = new LinkedListNode<>(new Rating("Paul", 4));
         expected = new LinkedListNode<>(new Rating("Carl", 5));
 
